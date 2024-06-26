@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
     const [movies, setMovies] = useState([
+        /*
         {
             id: 1,
             title: "Bad Boys",
@@ -28,14 +29,44 @@ export const MainView = () => {
             director: "Christopher Nolan",
             genre: "Science Fiction"
         }
+        */
     ]);
     const [selectedMovie, setSelectedMovie] = useState(null);
+
+    useEffect(() => {
+        fetch("https://shareif-flix-0b8cde79839e.herokuapp.com/movies")
+            .then((response) => response.json())
+            .then((data) => {
+                const moviesFromApi = data.map(movie => {
+                    return {
+                        id: movie._id,
+                        Title: movie.title,
+                        Description: movie.description,
+                        Genre: [{
+                            Name: movie.genre.name,
+                            Description: movie.genre.description
+                        }],
+                        Director: [{
+                            Name: movie.director.name,
+                            Bio: movie.director.bio,
+                            Birth: movie.director.birth
+                        }],
+                        Image: movie.image,
+                        Featured: movie.Featured
+                    }
+                });
+                if (moviesFromApi.length === 0) {
+                    return <div>The list is empty!</div>;
+                }
+                setMovies(moviesFromApi);
+            });
+    });
 
     if (selectedMovie) {
         return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
     }
 
-    if (movies.length === 0) {
+    if (moviesFromApi.length === 0) {
         return <div>The list is empty!</div>;
     }
 
