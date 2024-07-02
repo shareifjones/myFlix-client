@@ -55,12 +55,12 @@ export const MainView = () => {
                         Featured: movie.Featured
                     }
                 });
-                if (moviesFromApi.length === 0) {
-                    return <div>The list is empty!</div>;
-                }
+                // if (moviesFromApi.length === 0) {
+                //    return <div>The list is empty!</div>;
+                // }
                 setMovies(moviesFromApi);
             });
-    });
+    }, []);
 
     if (selectedMovie) {
         return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
