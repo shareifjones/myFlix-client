@@ -4,7 +4,7 @@ import React from "react";
 export const MovieCard = ({ movie, onMovieClick }) => {
     return (
         <div
-            onClick={() => {
+            onMovieClick={() => {
                 onMovieClick(movie);
             }}
         >
@@ -15,12 +15,19 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 
 MovieCard.PropTypes = {
     movie: PropTypes.shape({
-        Title: PropTypes.string.isRequired,
-        Description: PropTypes.string.isRequired,
-        Genre: PropTypes.arrayOf(PropTypes.object),
-        Director: PropTypes.arrayOf(PropTypes.object),
-        Image: PropTypes.string.isRequired,
-        Featured: PropTypes.bool
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        genre: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired
+        }),
+        director: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            bio: PropTypes.string.isRequired,
+            birth: PropTypes.string
+        }),
+        image: PropTypes.string.isRequired,
+        featured: PropTypes.bool
     }).isRequired,
     onMovieClick: PropTypes.func.isRequired
 };
