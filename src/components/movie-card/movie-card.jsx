@@ -4,7 +4,7 @@ import React from "react";
 export const MovieCard = ({ movie, onMovieClick }) => {
     return (
         <div
-            onMovieClick={() => {
+            onClick={() => {
                 onMovieClick(movie);
             }}
         >
