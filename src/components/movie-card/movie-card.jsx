@@ -1,10 +1,12 @@
-import PropTypes from "prop-types";
 import React from "react";
+import PropTypes from "prop-types";
+
 
 export const MovieCard = ({ movie, onMovieClick }) => {
     return (
         <div
             onClick={() => {
+                console.log("incorrect")
                 onMovieClick(movie);
             }}
         >
@@ -13,7 +15,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     );
 };
 
-MovieCard.PropTypes = {
+MovieCard.propTypes = {
     movie: PropTypes.shape({
         title: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,

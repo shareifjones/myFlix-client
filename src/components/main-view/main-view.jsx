@@ -3,7 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-
+import React from "react";
 
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -23,65 +23,65 @@ export const MainView = () => {
         })
             .then((response) => response.json())
             .then((movies) => {
-                setMovies(movies);
+                const moviesFromApi = movies.map(movie => {
+                    return {
+                        id: movie._id,
+                        title: movie.Title,
+                        description: movie.Description,
+                        genre: {
+                            name: movie.Genre.Name,
+                            description: movie.Genre.Description
+                        },
+                        director: {
+                            name: movie.Director.Name,
+                            bio: movie.Director.Bio,
+                            birth: movie.Director.Birth
+                        },
+                        image: movie.Image,
+                        featured: movie.Featured
+                    }
+                });
+
+                setMovies(moviesFromApi);
             });
     }, [token]);
 
-    const moviesFromApi = data.map(movie => {
-        return {
-            id: movie._id,
-            title: movie.Title,
-            description: movie.Description,
-            genre: [{
-                name: movie.Genre.Name,
-                description: movie.Genre.Description
-            }],
-            director: [{
-                name: movie.Director.Name,
-                bio: movie.Director.Bio,
-                birth: movie.Director.Birth
-            }],
-            image: movie.Image,
-            featured: movie.Featured
-        }
-    });
-}
-setMovies(moviesFromApi);
 
-if (!user) {
+
+    if (!user) {
+        return (
+            <>
+                <LoginView onLoggedIn={(user, token) => {
+                    setUser(user);
+                    setToken(token);
+                }} />
+                or
+                <SignupView />
+            </>
+        );
+    }
+
+    if (selectedMovie) {
+        return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
+    }
+
+    if (movies.length === 0) {
+        return <div>The list is empty!</div>;
+    }
+
     return (
-        <>
-            <LoginView onLoggedIn={(user, token) => {
-                setUser(user);
-                setToken(token);
-            }} />
-            or
-            <SignupView />
-        </>
+        <div>
+            <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+            {movies.map((movie) => (
+                <MovieCard
+                    key={movie.id}
+                    movie={movie}
+                    onMovieClick={(newSelectedMovie) => {
+                        setSelectedMovie(newSelectedMovie);
+                    }}
+                />
+            ))}
+        </div>
     );
-}
-
-if (selectedMovie) {
-    return <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />;
-}
-
-if (movies.length === 0) {
-    return <div>The list is empty!</div>;
-}
-
-return (
-    <div>
-        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
-        {movies.map((movie) => (
-            <MovieCard
-                key={movie.id}
-                movie={movie}
-                onMovieClick={(newSelectedMovie) => {
-                    setSelectedMovie(newSelectedMovie);
-                }}
-            />
-        ))}
-    </div>
-);
-
+};
 
