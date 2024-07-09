@@ -5,8 +5,9 @@ import Container from "react-bootstrap/Container";
 
 
 // Import statement to indicate that you need to bundle `./index.scss`
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
-import "./components/movie-view/movie-view.scss"
+import "./components/movie-view/movie-view.scss";
 
 // Main component (will eventually use all the others)
 const MyFlixApplication = () => {
