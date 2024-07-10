@@ -19,7 +19,8 @@ export const MainView = () => {
     const handleLoggedIn = (user, token) => {
         setUser(user);
         setToken(token);
-        setIsAuthenticated(true);
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", token);
     };
 
 
@@ -78,7 +79,7 @@ export const MainView = () => {
                                     <Navigate to="/" />
                                 ) : (
                                     <Col md={5}>
-                                        <SignupView />
+                                        <SignupView onLoggedIn={handleLoggedIn} />
                                     </Col>
                                 )}
                             </>
@@ -108,7 +109,7 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <Col md={8}>
-                                        <MovieView movie={movie} />
+                                        <MovieView movie={movies} />
                                     </Col>
                                 )}
                             </>
