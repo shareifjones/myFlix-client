@@ -8,7 +8,7 @@ import "./movie-card.scss";
 export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
     const addFavorite = async () => {
         try {
-            const response = await fetch("https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie._id}", {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie._id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
 
     const removeFavorite = async () => {
         try {
-            const response = await fetch("https://shareif-flix-0b8cde79839e.herokuapp.com/users/$(user)/movies/${movie._id}", {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie._id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
