@@ -14,7 +14,7 @@ export const LoginView = ({ onLoggedIn }) => {
         };
 
         try {
-            const response = await fetch("https://shareif-flix-0b8cde79839e.herokuapp.com/login",
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/login?Username=${data.Username}&Password=${data.Password}`,
 
                 {
                     method: "POST",
