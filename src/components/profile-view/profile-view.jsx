@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
+import UserInfo from "./user-info";
+import FavoriteMovies from "./favorite-movies";
+import UpdateUser from "./update-user";
 
 export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
     const [userInfo, setUserInfo] = useState({});
@@ -67,8 +74,13 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
 
     return (
         <div>
-            <h1>Profile</h1>
-            {error && <p className="error">{error}</p>}
+            <div className="movies">
+                <h2>Favorite Movies</h2>
+                {favoriteMovies.map((movie) => (
+                    <MovieCard key={movie.id} movie={movie} user={user} token={token} onUpdateUser={setUserInfo} />
+                ))}
+                <h4>Need to update info?</h4>
+            </div>
             <form onSubmit={handleUpdate}>
                 <label>
                     Username:
@@ -106,15 +118,9 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
                         required
                     />
                 </label>
-                <button type="submit">Update</button>
+                <Button type="submit" variant="outline-dark" onClick={handleUpdate}>Update</Button>
             </form>
-            <button onClick={handleDeregister}>Deregister</button>
-            <h2>Favorite Movies</h2>
-            <div className="movies">
-                {favoriteMovies.map((movie) => (
-                    <MovieCard key={movie._id} movie={movie} />
-                ))}
-            </div>
+            <Button variant="outline-dark" onClick={handleDeregister}>Deregister</Button>
         </div>
     );
 };

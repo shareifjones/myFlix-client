@@ -10,24 +10,23 @@ export const MovieView = ({ movies }) => {
     console.log("working", movieId)
 
     return (
-        <div>
+        <div class="center">
             <div>
-                <img className="w-100" src={movie.image} />
+                <img className="w-100" src={movie.image} fluid />
             </div>
             <div>
-                <span>Title: </span>
-                <span>{movie.title}</span>
+                <h4><b>{movie.title}</b></h4>
             </div>
             <div>
-                <span>Description: </span>
+                <span><b>Description: </b></span>
                 <span>{movie.description}</span>
             </div>
             <div>
-                <span>Director: </span>
+                <span><b>Director: </b></span>
                 <span>{movie.director.name}</span>
             </div>
             <div>
-                <span>Genre: </span>
+                <span><b>Genre: </b></span>
                 <span>{movie.genre.name}</span>
             </div>
             <Link to={`/`}>

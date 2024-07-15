@@ -5,10 +5,17 @@ import PropTypes from "prop-types";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" data-bs-theme="light">
             <Container>
                 <Navbar.Brand as={Link} to="/">
                     MyFlix
+                    <img
+                        src="https://i.etsystatic.com/10919371/r/il/9bd32c/1526385928/il_fullxfull.1526385928_bh9i.jpg"
+                        width="30"
+                        height="30"
+                        className="align-top"
+                        alt="flix logo"
+                    />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

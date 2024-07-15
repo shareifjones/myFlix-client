@@ -1,11 +1,22 @@
 .back-button {
     padding: 4px 12px 4px 12px;
-    color: whitesmoke;
-    background-color: dodgerblue;
+    color: black;
+    background-color: darkgray;
     border: none;
     border-radius: 4px;
 }
 
+.back-button:hover {
+    background-color: lightgrey;
+}
+
 img {
     width: 100%
+}
+
+.center {
+    text-align: center;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
