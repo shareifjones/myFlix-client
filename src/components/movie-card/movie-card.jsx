@@ -47,7 +47,7 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
             <Card.Body>
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>{movie.director.name}</Card.Text>
-                <Link to={`/movies/${movie._id}`}>
+                <Link to={`/movies/${movie.id}`}>
                     <Button variant="link">Open</Button>
                 </Link>
                 <Button onClick={addFavorite}>

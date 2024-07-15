@@ -48,7 +48,7 @@ export const MainView = () => {
                             bio: movie.Director.Bio,
                             birth: movie.Director.Birth
                         },
-                        image: movie.Image,
+                        image: movie.ImageURL,
                         featured: movie.Featured
                     }
                 });
@@ -110,7 +110,7 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <Col md={8}>
-                                        <MovieView movie={movies} />
+                                        <MovieView movies={movies} />
                                     </Col>
                                 )}
                             </>
