@@ -24,7 +24,15 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
                         Authorization: `Bearer ${token}`
                     }
                 });
-                if (!response.ok) throw new Error("Failed to fetch user info");
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Error details:', errorText);
+                    if (response.status === 401) {
+                        throw new Error('Unauthorized: Please check your token');
+                    } else {
+                        throw new Error('Failed to fetch user info');
+                    }
+                }
                 const data = await response.json();
                 setUserInfo(data);
                 setUsername(data.username);
@@ -75,52 +83,55 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
     return (
         <div>
             <div className="movies">
-                <h2>Favorite Movies</h2>
+                <h2 className="text-center">Favorite Movies</h2>
                 {favoriteMovies.map((movie) => (
                     <MovieCard key={movie.id} movie={movie} user={user} token={token} onUpdateUser={setUserInfo} />
-                ))}
-                <h4>Need to update info?</h4>
+                ))};
+                <h4 className="text-center">Need to update info?</h4>
             </div>
-            <form onSubmit={handleUpdate}>
-                <label>
+            <Form className="text-center" onSubmit={handleUpdate}>
+                <Form.Label>
                     Username:
-                    <input
+                    <Form.Control
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
                     />
-                </label>
-                <label>
+                </Form.Label>
+                <Form.Label>
                     Password:
-                    <input
+                    <Form.Control
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
-                </label>
-                <label>
+                </Form.Label>
+                <Form.Label>
                     Email:
-                    <input
+                    <Form.Control
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
-                </label>
-                <label>
+                </Form.Label>
+                <Form.Label>
                     Birthday:
-                    <input
+                    <Form.Control
                         type="birthday"
                         value={birthday}
                         onChange={(e) => setBirthday(e.target.value)}
                         required
                     />
-                </label>
+                </Form.Label>
+
+            </Form>
+            <div className="text-center">
                 <Button type="submit" variant="outline-dark" onClick={handleUpdate}>Update</Button>
-            </form>
-            <Button variant="outline-dark" onClick={handleDeregister}>Deregister</Button>
+                <Button variant="outline-dark" onClick={handleDeregister}>Deregister</Button>
+            </div>
         </div>
     );
 };

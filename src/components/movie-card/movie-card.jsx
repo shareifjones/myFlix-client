@@ -10,18 +10,29 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
 
     const addFavorite = async () => {
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie.id}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie._id}`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
                 }
             });
-            if (!response.ok) throw new Error('Failed to add favorite');
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('Error details:', errorText);
+                if (response.status === 401) {
+                    throw new Error('Unauthorized: Please check your token');
+                } else {
+                    throw new Error(`Failed to add favorite: ${errorText}`);
+                }
+            }
+
             const updatedUser = await response.json();
+            console.log('Updated user after adding favorite:', updatedUser);
             onUpdateUser(updatedUser);
         } catch (err) {
-            console.error('Error adding favorite:', err);
+            console.error('Error adding movie to favorites:', err.message);
         }
     };
 
@@ -44,13 +55,13 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
 
 
     return (
-        <Card className="text-center">
+        <Card className="text-center mt-2" style={{ height: '42rem' }} border="black">
             <Card.Img variant="top" src={movie.image} />
             <Card.Body>
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>{movie.director.name}</Card.Text>
                 <Link to={`/movies/${movie.id}`}>
-                    <Button variant="link" className="more-button" >See more</Button>
+                    <Button variant="link" >See more</Button>
                 </Link>
                 <ButtonGroup aria-label="Favorites">
                     <Button variant="outline-dark" onClick={addFavorite}>

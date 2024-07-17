@@ -2,15 +2,17 @@ import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Logo } from "/img/myFlix.png";
+import { Image } from "react-bootstrap";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
     return (
-        <Navbar bg="light" data-bs-theme="light">
+        <Navbar bg="dark" data-bs-theme="dark" className="">
             <Container>
                 <Navbar.Brand as={Link} to="/">
                     MyFlix
-                    <img
-                        src="https://i.etsystatic.com/10919371/r/il/9bd32c/1526385928/il_fullxfull.1526385928_bh9i.jpg"
+                    <Image
+                        src={Logo}
                         width="30"
                         height="30"
                         className="align-top"
@@ -51,3 +53,5 @@ NavigationBar.propTypes = {
     user: PropTypes.object,
     onLoggedOut: PropTypes.func.isRequired,
 };
+
+export default NavigationBar;

@@ -1,5 +1,21 @@
-.more-button {
-  justify-content: center;
+.movie-card {
+  flex-direction: column;
+  width: 250px;
+  height: 400px;
+  margin: 10px;
+  display: flex;
+  overflow: hidden;
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+}
+
+.movie-card .card-body {
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
   display: flex;
 }
 
@@ -24,6 +40,11 @@ img {
   max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
+}
+
+.image {
+  width: 400px;
+  height: auto;
 }
 
 *, :after, :before {
