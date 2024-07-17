@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+.ButtonGroup {
+  align-items: baseline;
+}
+
 .back-button {
   color: #000;
   background-color: #a9a9a9;

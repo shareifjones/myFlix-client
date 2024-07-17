@@ -64,10 +64,10 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
                     <Button variant="link" >See more</Button>
                 </Link>
                 <ButtonGroup aria-label="Favorites" vertical>
-                    <Button variant="outline-dark" className="d-sm-block" onClick={addFavorite}>
+                    <Button variant="outline-dark" onClick={addFavorite}>
                         Add to Favorites
                     </Button>
-                    <Button variant="outline-dark" className="d-sm-block" onClick={removeFavorite}>
+                    <Button variant="outline-dark" onClick={removeFavorite}>
                         Remove from Favorites
                     </Button>
                 </ButtonGroup>

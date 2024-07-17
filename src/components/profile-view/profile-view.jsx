@@ -86,7 +86,9 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
                 <h2 className="text-center">Favorite Movies</h2>
                 {favoriteMovies.map((movie) => (
                     <MovieCard key={movie.id} movie={movie} user={user} token={token} onUpdateUser={setUserInfo} />
-                ))};
+                ))}
+            </div>
+            <div>
                 <h4 className="text-center">Need to update info?</h4>
             </div>
             <Form className="text-center" onSubmit={handleUpdate}>
@@ -129,8 +131,8 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
 
             </Form>
             <div className="text-center">
-                <Button type="submit" variant="outline-dark" onClick={handleUpdate}>Update</Button>
-                <Button variant="outline-dark" onClick={handleDeregister}>Deregister</Button>
+                <Button type="submit" variant="outline-dark" onClick={handleUpdate}>Update Profile</Button>
+                <Button variant="outline-dark" onClick={handleDeregister}>Delete Profile</Button>
             </div>
         </div>
     );
