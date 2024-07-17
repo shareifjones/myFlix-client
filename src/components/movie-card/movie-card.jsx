@@ -55,19 +55,19 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
 
 
     return (
-        <Card className="text-center mt-2" style={{ height: '42rem' }} border="black">
+        <Card className="text-center mt-2 mb-2" style={{ width: '100%', height: '100%' }} border="black">
             <Card.Img variant="top" src={movie.image} />
-            <Card.Body>
+            <Card.Body className="d-flex flex-column">
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>{movie.director.name}</Card.Text>
                 <Link to={`/movies/${movie.id}`}>
                     <Button variant="link" >See more</Button>
                 </Link>
-                <ButtonGroup aria-label="Favorites">
-                    <Button variant="outline-dark" onClick={addFavorite}>
+                <ButtonGroup aria-label="Favorites" vertical>
+                    <Button variant="outline-dark" className="d-sm-block" onClick={addFavorite}>
                         Add to Favorites
                     </Button>
-                    <Button variant="outline-dark" onClick={removeFavorite}>
+                    <Button variant="outline-dark" className="d-sm-block" onClick={removeFavorite}>
                         Remove from Favorites
                     </Button>
                 </ButtonGroup>

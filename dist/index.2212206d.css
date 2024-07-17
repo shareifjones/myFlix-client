@@ -1,22 +1,14 @@
-.movie-card {
-  flex-direction: column;
-  width: 250px;
-  height: 400px;
-  margin: 10px;
-  display: flex;
-  overflow: hidden;
+.card {
+  height: 100%;
 }
 
-.movie-card img {
+.card-img-top {
   width: 100%;
   height: auto;
 }
 
-.movie-card .card-body {
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between;
-  display: flex;
+.card-body {
+  overflow: hidden;
 }
 
 .back-button {

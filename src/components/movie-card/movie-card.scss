@@ -1,24 +1,13 @@
-.movie-card {
-    width: 250px;
-    /* Set desired width */
-    height: 400px;
-    /* Set desired height */
-    overflow: hidden;
-    /* Hide overflow content */
-    margin: 10px;
-    /* Space between cards */
-    display: flex;
-    flex-direction: column;
+.card {
+    height: 100%;
 }
 
-.movie-card img {
+.card-img-top {
     width: 100%;
     height: auto;
 }
 
-.movie-card .card-body {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.card-body {
+    overflow: hidden;
+    /* Ensure content within the card body doesn't overflow */
 }

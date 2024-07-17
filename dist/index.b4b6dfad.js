@@ -27436,8 +27436,9 @@ const MainView = ()=>{
                                     columnNumber: 37
                                 }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                     children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-                                            className: "mb-4",
+                                            className: "mb-4 px-2",
                                             md: 3,
+                                            sm: 4,
                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                                 movie: movie
                                             }, void 0, false, {
@@ -27594,9 +27595,10 @@ const MovieCard = ({ movie, user, token, onUpdateUser })=>{
         }
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
-        className: "text-center mt-2",
+        className: "text-center mt-2 mb-2",
         style: {
-            height: "42rem"
+            width: "100%",
+            height: "100%"
         },
         border: "black",
         children: [
@@ -27609,6 +27611,7 @@ const MovieCard = ({ movie, user, token, onUpdateUser })=>{
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
+                className: "d-flex flex-column",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
                         children: movie.title
@@ -27641,9 +27644,11 @@ const MovieCard = ({ movie, user, token, onUpdateUser })=>{
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ButtonGroup), {
                         "aria-label": "Favorites",
+                        vertical: true,
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                 variant: "outline-dark",
+                                className: "d-sm-block",
                                 onClick: addFavorite,
                                 children: "Add to Favorites"
                             }, void 0, false, {
@@ -27653,6 +27658,7 @@ const MovieCard = ({ movie, user, token, onUpdateUser })=>{
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                 variant: "outline-dark",
+                                className: "d-sm-block",
                                 onClick: removeFavorite,
                                 children: "Remove from Favorites"
                             }, void 0, false, {
