@@ -1,9 +1,9 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, NavbarBrand } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Logo } from "/img/myFlix.png";
 import { Image } from "react-bootstrap";
+import { Logo } from "../img/myFlix.png";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
     return (
@@ -11,13 +11,14 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             <Container>
                 <Navbar.Brand as={Link} to="/">
                     MyFlix
-                    <Image
-                        src={Logo}
-                        width="30"
-                        height="30"
-                        className="align-top"
-                        alt="flix logo"
-                    />
+                    <Navbar.Brand href="#">
+                        <Image
+                            src={Logo}
+                            style={{ height: '33px', width: '33px', padding: '5px' }}
+                            className="align-top"
+                            alt="myFlix logo"
+                        />
+                    </Navbar.Brand>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
