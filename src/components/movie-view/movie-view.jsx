@@ -12,7 +12,7 @@ export const MovieView = ({ movies }) => {
     return (
         <div class="center">
             <div>
-                <img className="image" src={movie.image} fluid />
+                <img className="image mt-2 mb-2" src={movie.image} fluid />
             </div>
             <div>
                 <h4><b>{movie.title}</b></h4>

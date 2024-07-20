@@ -10,7 +10,7 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
 
     const addFavorite = async () => {
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie._id}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -18,6 +18,9 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
                 }
             });
 
+            if (response.ok) {
+                alert("Added to favorites");
+            }
             if (!response.ok) {
                 const errorText = await response.text();
                 console.error('Error details:', errorText);
@@ -38,7 +41,7 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
 
     const removeFavorite = async () => {
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie.id}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

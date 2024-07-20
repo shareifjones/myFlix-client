@@ -3,7 +3,7 @@ import { Navbar, Container, Nav, NavbarBrand } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Image } from "react-bootstrap";
-import { Logo } from "../img/myFlix.png";
+import { Logo } from "/src/components/img/myFlix.png";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
     return (
@@ -12,7 +12,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                 <Navbar.Brand as={Link} to="/">
                     MyFlix
                     <Navbar.Brand href="#">
-                        <Image
+                        <img
                             src={Logo}
                             style={{ height: '33px', width: '33px', padding: '5px' }}
                             className="align-top"

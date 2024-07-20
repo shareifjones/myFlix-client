@@ -19,7 +19,7 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
-                const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}`, {
+                const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -48,7 +48,7 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
