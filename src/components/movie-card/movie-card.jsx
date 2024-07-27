@@ -3,14 +3,13 @@ import PropTypes from "prop-types";
 import { Button, ButtonGroup, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./movie-card.scss";
-import UpdateUser from "../profile-view/update-user";
+
 
 
 export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
-
     const addFavorite = async () => {
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie.id}`, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -41,16 +40,20 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
 
     const removeFavorite = async () => {
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie.id}`, {
                 method: 'DELETE',
                 headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
                 }
             });
+            if (response.ok) {
+                alert("Removed from favorites");
+            }
             if (!response.ok) throw new Error('Failed to remove favorite');
-            const data = await response.json();
-            onUpdateUser(data);
+            const removedMovie = await response.json();
+            console.log("deleted movie", removedMovie);
+            onUpdateUser(removedMovie);
         } catch (err) {
             console.error('Error removing favorite:', err);
         }

@@ -78,7 +78,7 @@ export const SignupView = () => {
                     />
                 </Form.Group>
                 <Button variant="outline-dark" type="submit">
-                    Submit
+                    Sign-Up
                 </Button>
             </Form>
         </div>

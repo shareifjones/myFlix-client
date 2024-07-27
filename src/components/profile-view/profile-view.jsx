@@ -4,11 +4,9 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
-import UserInfo from "./user-info";
-import FavoriteMovies from "./favorite-movies";
-import UpdateUser from "./update-user";
 
 export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
+    console.log("user", user)
     const [userInfo, setUserInfo] = useState({});
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -17,6 +15,7 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
     const [error, setError] = useState("");
 
     useEffect(() => {
+
         const fetchUserInfo = async () => {
             try {
                 const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}`, {
@@ -43,7 +42,7 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
             }
         };
         fetchUserInfo();
-    }, [user, token]);
+    }, []);
 
     const handleUpdate = async (e) => {
         e.preventDefault();
@@ -67,7 +66,7 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
 
     const handleDeregister = async () => {
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -79,13 +78,14 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
     };
 
     const favoriteMovies = movies.filter(m => userInfo.favoriteMovies?.includes(m._id));
+    console.log("checking", favoriteMovies, movies, user)
 
     return (
         <div>
             <div className="movies">
                 <h2 className="text-center">Favorite Movies</h2>
                 {favoriteMovies.map((movie) => (
-                    <MovieCard key={movie.id} movie={movie} user={user} token={token} onUpdateUser={setUserInfo} />
+                    <MovieCard key={movie.id} movie={movie} user={userInfo} token={token} onUpdateUser={setUser} />
                 ))}
             </div>
             <div>
