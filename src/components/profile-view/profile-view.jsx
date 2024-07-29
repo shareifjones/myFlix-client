@@ -8,10 +8,10 @@ import { MovieCard } from "../movie-card/movie-card";
 export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
     console.log("user", user)
     const [userInfo, setUserInfo] = useState({});
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState(user.Username);
     const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [birthday, setBirthday] = useState("");
+    const [email, setEmail] = useState(user.Email);
+    const [birthday, setBirthday] = useState(user.Birthday);
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -77,16 +77,19 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
         }
     };
 
-    const favoriteMovies = movies.filter(m => userInfo.favoriteMovies?.includes(m._id));
-    console.log("checking", favoriteMovies, movies, user)
+    const FavoriteMovies = movies.filter(m => userInfo.FavoriteMovies?.includes(m.id));
+    console.log("checking", FavoriteMovies, movies, user, userInfo)
 
     return (
         <div>
             <div className="movies">
                 <h2 className="text-center">Favorite Movies</h2>
-                {favoriteMovies.map((movie) => (
-                    <MovieCard key={movie.id} movie={movie} user={userInfo} token={token} onUpdateUser={setUser} />
+                {FavoriteMovies.map((movie) => (
+                    <MovieCard key={movie.id} movie={movie} user={userInfo} token={token} onUpdateUser={setUserInfo} />
                 ))}
+                {// need a 4th parameter that reports changes to favorite movies
+                }
+
             </div>
             <div>
                 <h4 className="text-center">Need to update info?</h4>

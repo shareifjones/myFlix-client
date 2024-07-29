@@ -129,7 +129,7 @@ export const MainView = () => {
                                     <>
                                         {movies.map((movie) => (
                                             <Col className="mb-4 px-2" md={3} sm={4} key={movie.id} >
-                                                <MovieCard movie={movie} user={user} token={token} onUpdateUser={setUser} />
+                                                <MovieCard movie={movie} user={user.Username} token={token} onUpdateUser={setUser} />
                                             </Col>
                                         ))}
                                     </>
@@ -145,7 +145,7 @@ export const MainView = () => {
                                     <Navigate to="/login" replace />
                                 ) : (
                                     < Col md={5}>
-                                        <ProfileView movies={movies} />
+                                        <ProfileView user={user} token={token} movies={movies} onLoggedIn={console.log("need to update user in mainview")} />
                                     </Col>
                                 )}
                             </>

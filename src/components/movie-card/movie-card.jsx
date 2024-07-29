@@ -7,6 +7,7 @@ import "./movie-card.scss";
 
 
 export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
+
     const addFavorite = async () => {
         try {
             const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie.id}`, {
