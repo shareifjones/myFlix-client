@@ -13,10 +13,10 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                     MyFlix
                     <Navbar.Brand href="#">
                         <img
-                            src={"./img/myFlix-big.png"}
+                            src="https://www.google.com/imgres?q=movies%20logo&imgurl=https%3A%2F%2Ft3.ftcdn.net%2Fjpg%2F04%2F64%2F78%2F74%2F360_F_464787423_mFNIhM8f00HagGgI2eGzsf3wevZhPHCC.jpg&imgrefurl=https%3A%2F%2Fstock.adobe.com%2Fsearch%2Fimages%3Fk%3D%2522movie%2Blogo%2522&docid=V2I26roF5Vo_1M&tbnid=zvmG0_K3sFoLxM&vet=12ahUKEwjCsvyV6MyHAxXFFVkFHb9MImEQM3oECHkQAA..i&w=361&h=360&hcb=2&itg=1&ved=2ahUKEwjCsvyV6MyHAxXFFVkFHb9MImEQM3oECHkQAA"
                             style={{ height: '33px', width: '33px', padding: '5px' }}
                             className="align-top"
-                            alt="myFlix Logo"
+                            alt="myFlix logo"
                         />
                     </Navbar.Brand>
                 </Navbar.Brand>

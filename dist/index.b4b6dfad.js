@@ -42776,7 +42776,7 @@ const ProfileView = ({ user, token, movies, onLoggedIn })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "movies",
+                class: "movies",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                         className: "text-center",
@@ -42981,14 +42981,14 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Brand, {
                             href: "#",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                src: "./img/myFlix-big.png",
+                                src: "https://www.google.com/imgres?q=movies%20logo&imgurl=https%3A%2F%2Ft3.ftcdn.net%2Fjpg%2F04%2F64%2F78%2F74%2F360_F_464787423_mFNIhM8f00HagGgI2eGzsf3wevZhPHCC.jpg&imgrefurl=https%3A%2F%2Fstock.adobe.com%2Fsearch%2Fimages%3Fk%3D%2522movie%2Blogo%2522&docid=V2I26roF5Vo_1M&tbnid=zvmG0_K3sFoLxM&vet=12ahUKEwjCsvyV6MyHAxXFFVkFHb9MImEQM3oECHkQAA..i&w=361&h=360&hcb=2&itg=1&ved=2ahUKEwjCsvyV6MyHAxXFFVkFHb9MImEQM3oECHkQAA",
                                 style: {
                                     height: "33px",
                                     width: "33px",
                                     padding: "5px"
                                 },
                                 className: "align-top",
-                                alt: "myFlix Logo"
+                                alt: "myFlix logo"
                             }, void 0, false, {
                                 fileName: "src/components/navigation-bar/navigation-bar.jsx",
                                 lineNumber: 15,

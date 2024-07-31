@@ -82,7 +82,7 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
 
     return (
         <div>
-            <div className="movies">
+            <div class="movies">
                 <h2 className="text-center">Favorite Movies</h2>
                 {FavoriteMovies.map((movie) => (
                     <MovieCard key={movie.id} movie={movie} user={userInfo} token={token} onUpdateUser={setUserInfo} />
