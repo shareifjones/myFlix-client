@@ -26,7 +26,19 @@ export const NavigationBar = ({ user, onSearch, onLoggedOut }) => {
                         <Button variant="outline-light">Search</Button>
                     </Form>
                 )}
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                {user && (
+                    <Form className="d-lg-none d-flex align-items-center ms-auto">
+                        <Form.Control
+                            type="search"
+                            placeholder="Search movie"
+                            className="me-2 custom-search"
+                            aria-label="Search"
+                            onChange={handleSearchChange}
+                        />
+                        <Button variant="outline-light">Search</Button>
+                    </Form>
+                )}
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         {!user && (
