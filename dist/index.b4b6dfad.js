@@ -27585,7 +27585,7 @@ const MovieCard = ({ movie, user, token, onUpdateUser })=>{
     };
     const removeFavorite = async ()=>{
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie.id}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
