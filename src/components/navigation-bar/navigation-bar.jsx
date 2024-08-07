@@ -14,6 +14,8 @@ export const NavigationBar = ({ user, onSearch, onLoggedOut }) => {
                 <Navbar.Brand as={Link} to="/">
                     MyFlix
                 </Navbar.Brand>
+
+                {/*large screens */}
                 {user && (
                     <Form className="d-none d-lg-flex mx-auto align-items-center">
                         <Form.Control
@@ -26,6 +28,7 @@ export const NavigationBar = ({ user, onSearch, onLoggedOut }) => {
                         <Button variant="outline-light">Search</Button>
                     </Form>
                 )}
+                {/*small screens */}
                 {user && (
                     <Form className="d-lg-none d-flex align-items-center ms-auto">
                         <Form.Control
