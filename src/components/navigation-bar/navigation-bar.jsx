@@ -37,7 +37,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                         {user && (
                             <>
                                 <Nav.Link as={Link} to="/">
-                                    Movies
+                                    Home
                                 </Nav.Link>
                                 <Nav.Link as={Link} to="/profile">
                                     Profile
