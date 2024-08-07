@@ -16,6 +16,8 @@ export const MainView = () => {
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = useState(storedUser ? storedUser : null);
     const [token, setToken] = useState(storedToken ? storedToken : null);
+    const [filteredMovies, setFilteredMovies] = useState([]);
+    const [filter, setFilter] = useState('');
     const [movies, setMovies] = useState([]);
     const handleLoggedIn = (user, token) => {
         setUser(user);
@@ -58,6 +60,14 @@ export const MainView = () => {
             });
     }, [token]);
 
+    useEffect(() => {
+        setFilteredMovies(
+            movies.filter((movie) =>
+                movie.title.toLowerCase().includes(filter.toLowerCase())
+            )
+        );
+    }, [filter, movies]);
+
 
 
 
@@ -70,6 +80,7 @@ export const MainView = () => {
                     setToken(null);
                     localStorage.clear();
                 }}
+                onSearch={(query) => setFilter(query)}
             />
             <Row className="justify-content-md-center">
                 <Routes>
@@ -127,7 +138,7 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <>
-                                        {movies.map((movie) => (
+                                        {filteredMovies.map((movie) => (
                                             <Col className="mb-4 px-2" md={3} sm={4} key={movie.id} >
                                                 <MovieCard movie={movie} user={user.Username} token={token} onUpdateUser={setUser} />
                                             </Col>
