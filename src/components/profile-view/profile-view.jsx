@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
+export const ProfileView = ({ user, token, movies, onLoggedIn, onUpdateUser }) => {
     console.log("user", user)
     const [userInfo, setUserInfo] = useState({});
     const [username, setUsername] = useState(user.Username);
@@ -78,7 +78,7 @@ export const ProfileView = ({ user, token, movies, onLoggedIn }) => {
     };
 
     const FavoriteMovies = movies.filter(m => userInfo.FavoriteMovies?.includes(m.id));
-    console.log("checking", FavoriteMovies, movies, user, userInfo)
+
 
     return (
         <div>

@@ -41,7 +41,7 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
 
     const removeFavorite = async () => {
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie.id}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -52,9 +52,9 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
                 alert("Removed from favorites");
             }
             if (!response.ok) throw new Error('Failed to remove favorite');
-            const removedMovie = await response.json();
-            console.log("deleted movie", removedMovie);
-            onUpdateUser(removedMovie);
+            const updatedUser = await response.json();
+            console.log("deleted movie", updatedUser);
+            onUpdateUser(updatedUser);
         } catch (err) {
             console.error('Error removing favorite:', err);
         }

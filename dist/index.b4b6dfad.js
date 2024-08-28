@@ -27486,7 +27486,7 @@ const MainView = ()=>{
                                         user: user,
                                         token: token,
                                         movies: movies,
-                                        onLoggedIn: console.log("need to update user in mainview")
+                                        onUpdateUser: setUser
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
                                         lineNumber: 159,
@@ -27594,7 +27594,7 @@ const MovieCard = ({ movie, user, token, onUpdateUser })=>{
     };
     const removeFavorite = async ()=>{
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie.id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -27603,9 +27603,9 @@ const MovieCard = ({ movie, user, token, onUpdateUser })=>{
             });
             if (response.ok) alert("Removed from favorites");
             if (!response.ok) throw new Error("Failed to remove favorite");
-            const removedMovie = await response.json();
-            console.log("deleted movie", removedMovie);
-            onUpdateUser(removedMovie);
+            const updatedUser = await response.json();
+            console.log("deleted movie", updatedUser);
+            onUpdateUser(updatedUser);
         } catch (err) {
             console.error("Error removing favorite:", err);
         }
@@ -42708,7 +42708,7 @@ var _cardDefault = parcelHelpers.interopDefault(_card);
 var _reactRouterDom = require("react-router-dom");
 var _movieCard = require("../movie-card/movie-card");
 var _s = $RefreshSig$();
-const ProfileView = ({ user, token, movies, onLoggedIn })=>{
+const ProfileView = ({ user, token, movies, onLoggedIn, onUpdateUser })=>{
     _s();
     console.log("user", user);
     const [userInfo, setUserInfo] = (0, _react.useState)({});
@@ -42781,7 +42781,6 @@ const ProfileView = ({ user, token, movies, onLoggedIn })=>{
         }
     };
     const FavoriteMovies = movies.filter((m)=>userInfo.FavoriteMovies?.includes(m.id));
-    console.log("checking", FavoriteMovies, movies, user, userInfo);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {

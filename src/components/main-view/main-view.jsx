@@ -156,7 +156,7 @@ export const MainView = () => {
                                     <Navigate to="/login" replace />
                                 ) : (
                                     < Col md={5}>
-                                        <ProfileView user={user} token={token} movies={movies} onLoggedIn={console.log("need to update user in mainview")} />
+                                        <ProfileView user={user} token={token} movies={movies} onUpdateUser={setUser} />
                                     </Col>
                                 )}
                             </>
