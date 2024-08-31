@@ -53,8 +53,9 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
             }
             if (!response.ok) throw new Error('Failed to remove favorite');
             const updatedUser = await response.json();
-            console.log("deleted movie", updatedUser);
             onUpdateUser(updatedUser);
+            console.log("deleted movie", updatedUser);
+
         } catch (err) {
             console.error('Error removing favorite:', err);
         }

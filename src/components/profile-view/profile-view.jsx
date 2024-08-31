@@ -4,10 +4,11 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
+import NavigationBar from "../navigation-bar/navigation-bar";
 
-export const ProfileView = ({ user, token, movies, onLoggedIn, onUpdateUser }) => {
-    console.log("user", user)
-    const [userInfo, setUserInfo] = useState({});
+export const ProfileView = ({ user, movies, token, onLoggedIn }) => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const [userInfo, setUserInfo] = useState(storedUser ? storedUser : null);
     const [username, setUsername] = useState(user.Username);
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState(user.Email);
@@ -78,15 +79,21 @@ export const ProfileView = ({ user, token, movies, onLoggedIn, onUpdateUser }) =
     };
 
     const FavoriteMovies = movies.filter(m => userInfo.FavoriteMovies?.includes(m.id));
+    console.log("what", userInfo, FavoriteMovies);
 
 
     return (
+
         <div>
             <div class="movies">
                 <h2 className="text-center">Favorite Movies</h2>
-                {FavoriteMovies.map((movie) => (
-                    <MovieCard key={movie.id} movie={movie} user={userInfo} token={token} onUpdateUser={setUserInfo} />
-                ))}
+                {FavoriteMovies.length === 0 ? (
+                    <p>No favorite movies added yet!</p>
+                ) : (
+                    FavoriteMovies.map((movie) => (
+                        <MovieCard key={movie.id} movie={movie} user={user.Username} token={token} onUpdateUser={setUserInfo} />
+                    ))
+                )}
                 {// need a 4th parameter that reports changes to favorite movies
                 }
 
