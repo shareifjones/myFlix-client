@@ -20,7 +20,7 @@ export const MovieView = ({ movies, user, token, onUpdateUser }) => {
                     'Content-Type': 'application/json'
                 }
             });
-            console.log("add", user)
+            console.log("username add", user)
 
             if (response.ok) {
                 alert("Added to favorites");
@@ -52,7 +52,7 @@ export const MovieView = ({ movies, user, token, onUpdateUser }) => {
                     'Content-Type': 'application/json'
                 }
             });
-            console.log("whatever", user)
+            console.log("username remove", user)
             if (response.ok) {
                 alert("Removed from favorites");
             }

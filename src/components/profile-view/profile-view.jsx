@@ -15,6 +15,7 @@ export const ProfileView = ({ user, movies, token, onLoggedIn }) => {
     const [birthday, setBirthday] = useState(user.Birthday);
     const [error, setError] = useState("");
 
+
     useEffect(() => {
 
         const fetchUserInfo = async () => {
