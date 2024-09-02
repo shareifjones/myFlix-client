@@ -1,10 +1,10 @@
+import React from "react";
 import { useParams } from "react-router";
-import { Link, } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, ButtonGroup } from "react-bootstrap";
 import "./movie-view.scss"
 
 export const MovieView = ({ movies, user, token, onUpdateUser }) => {
-
 
     const { movieId } = useParams();
 
@@ -20,6 +20,7 @@ export const MovieView = ({ movies, user, token, onUpdateUser }) => {
                     'Content-Type': 'application/json'
                 }
             });
+            console.log("add", user)
 
             if (response.ok) {
                 alert("Added to favorites");
@@ -51,6 +52,7 @@ export const MovieView = ({ movies, user, token, onUpdateUser }) => {
                     'Content-Type': 'application/json'
                 }
             });
+            console.log("whatever", user)
             if (response.ok) {
                 alert("Removed from favorites");
             }
@@ -88,7 +90,7 @@ export const MovieView = ({ movies, user, token, onUpdateUser }) => {
                     <Button variant="outline-dark" onClick={addFavorite}>
                         Add to Favorites
                     </Button>
-                    <Button variant="outline-dark" onClick={() => removeFavorite(movie.id)}>
+                    <Button variant="outline-dark" onClick={removeFavorite}>
                         Remove from Favorites
                     </Button>
                 </ButtonGroup>
@@ -99,3 +101,5 @@ export const MovieView = ({ movies, user, token, onUpdateUser }) => {
         </div>
     );
 };
+
+export default MovieView;
