@@ -57,6 +57,10 @@ export const ProfileView = ({ user, movies, token, onLoggedIn }) => {
                 },
                 body: JSON.stringify({ Username: username, Password: password, Email: email, Birthday: birthday })
             });
+
+            if (response.ok) {
+                alert("Updated profile");
+            }
             if (!response.ok) throw new Error("Failed to update user info");
             const data = await response.json();
             setUserInfo(data);
@@ -72,6 +76,7 @@ export const ProfileView = ({ user, movies, token, onLoggedIn }) => {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` }
             });
+
             if (!response.ok) throw new Error("Failed to deregister");
             onLoggedIn(null, null);
         } catch (err) {
@@ -80,7 +85,7 @@ export const ProfileView = ({ user, movies, token, onLoggedIn }) => {
     };
 
     const FavoriteMovies = movies.filter(m => userInfo.FavoriteMovies?.includes(m.id));
-    console.log("what", userInfo, FavoriteMovies);
+    console.log("info and movies", userInfo, FavoriteMovies);
 
 
     return (

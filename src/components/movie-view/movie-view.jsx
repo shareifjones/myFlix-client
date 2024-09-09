@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button, ButtonGroup } from "react-bootstrap";
 import "./movie-view.scss"
 
-export const MovieView = ({ movies, user, token, onUpdateUser, movie }) => {
+export const MovieView = ({ movies, user, token, onUpdateUser }) => {
 
     const { movieId } = useParams();
 
@@ -13,14 +13,14 @@ export const MovieView = ({ movies, user, token, onUpdateUser, movie }) => {
 
     const addFavorite = async () => {
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie.id}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             });
-            console.log("username add", user)
+            console.log("username add", user, token)
 
             if (response.ok) {
                 alert("Added to favorites");
@@ -37,7 +37,7 @@ export const MovieView = ({ movies, user, token, onUpdateUser, movie }) => {
 
             const updatedUser = await response.json();
             console.log('Updated user after adding favorite:', updatedUser);
-            onUpdateUser(updatedUser);
+            // onUpdateUser(updatedUser);
         } catch (err) {
             console.error('Error adding movie to favorites:', err.message);
         }
@@ -45,7 +45,7 @@ export const MovieView = ({ movies, user, token, onUpdateUser, movie }) => {
 
     const removeFavorite = async () => {
         try {
-            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user}/movies/${movie.id}`, {
+            const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -53,6 +53,7 @@ export const MovieView = ({ movies, user, token, onUpdateUser, movie }) => {
                 }
             });
             console.log("username remove", user)
+
             if (response.ok) {
                 alert("Removed from favorites");
             }
