@@ -75,6 +75,8 @@ export const MainView = () => {
         <BrowserRouter>
             <NavigationBar
                 user={user}
+                movies={movies}
+
                 onLoggedOut={() => {
                     setUser(null);
                     setToken(null);
