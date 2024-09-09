@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button, ButtonGroup } from "react-bootstrap";
 import "./movie-view.scss"
 
-export const MovieView = ({ movies, user, token, onUpdateUser }) => {
+export const MovieView = ({ movies, user, token, onUpdateUser, movie }) => {
 
     const { movieId } = useParams();
 
