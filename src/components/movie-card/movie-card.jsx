@@ -17,7 +17,7 @@ export const MovieCard = ({ movie, user, token, onUpdateUser }) => {
                     'Content-Type': 'application/json'
                 }
             });
-            console.log("whatevs", user)
+
 
             if (response.ok) {
                 alert("Added to favorites");
