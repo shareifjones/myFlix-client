@@ -3,10 +3,11 @@ import { Navbar, Container, Nav, NavbarBrand, Form, Button } from "react-bootstr
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export const NavigationBar = ({ user, onSearch, onLoggedOut }) => {
+export const NavigationBar = ({ user, showSearch, onSearch, onLoggedOut }) => {
     const handleSearchChange = (e) => {
         onSearch(e.target.value)
     };
+
 
     return (
         <Navbar bg="dark" data-bs-theme="dark" className="">
@@ -16,7 +17,7 @@ export const NavigationBar = ({ user, onSearch, onLoggedOut }) => {
                 </Navbar.Brand>
 
                 {/*large screens */}
-                {user && (
+                {user && showSearch && (
                     <Form className="d-none d-lg-flex mx-auto align-items-center">
                         <Form.Control
                             type="search"
@@ -25,7 +26,7 @@ export const NavigationBar = ({ user, onSearch, onLoggedOut }) => {
                             aria-label="Search"
                             onChange={handleSearchChange}
                         />
-                        <Button variant="outline-light">Search</Button>
+                        <Button variant="outline-light">Search1</Button>
                     </Form>
                 )}
                 {/*small screens */}
@@ -38,7 +39,7 @@ export const NavigationBar = ({ user, onSearch, onLoggedOut }) => {
                             aria-label="Search"
                             onChange={handleSearchChange}
                         />
-                        <Button variant="outline-light">Search</Button>
+                        <Button variant="outline-light">Search2</Button>
                     </Form>
                 )}
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

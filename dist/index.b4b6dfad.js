@@ -24112,9 +24112,10 @@ const MainView = ()=>{
             columnNumber: 9
         },
         __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _navigationBar.NavigationBar), {
+    }, !user && /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _navigationBar.NavigationBar), {
         user: user,
         movies: movies,
+        showSearch: true,
         onLoggedOut: ()=>{
             setUser(null);
             setToken(null);
@@ -24124,21 +24125,21 @@ const MainView = ()=>{
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
             lineNumber: 76,
-            columnNumber: 13
+            columnNumber: 24
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _rowDefault.default), {
         className: "justify-content-md-center",
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 87,
+            lineNumber: 88,
             columnNumber: 13
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Routes), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 88,
+            lineNumber: 89,
             columnNumber: 17
         },
         __self: undefined
@@ -24148,27 +24149,27 @@ const MainView = ()=>{
             to: "/",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 94,
+                lineNumber: 95,
                 columnNumber: 37
             }
         }) : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _colDefault.default), {
             md: 5,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 96,
+                lineNumber: 97,
                 columnNumber: 37
             }
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signupView.SignupView), {
             onLoggedIn: handleLoggedIn,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 97,
+                lineNumber: 98,
                 columnNumber: 41
             }
         }))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 89,
+            lineNumber: 90,
             columnNumber: 21
         },
         __self: undefined
@@ -24178,27 +24179,27 @@ const MainView = ()=>{
             to: "/",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 108,
+                lineNumber: 109,
                 columnNumber: 37
             }
         }) : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _colDefault.default), {
             md: 5,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 110,
+                lineNumber: 111,
                 columnNumber: 37
             }
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _loginView.LoginView), {
             onLoggedIn: handleLoggedIn,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 111,
+                lineNumber: 112,
                 columnNumber: 41
             }
         }))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 103,
+            lineNumber: 104,
             columnNumber: 21
         },
         __self: undefined
@@ -24209,21 +24210,36 @@ const MainView = ()=>{
             replace: true,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 122,
+                lineNumber: 123,
                 columnNumber: 37
             }
         }) : movies.length === 0 ? /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _colDefault.default), {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 124,
+                lineNumber: 125,
                 columnNumber: 37
             }
-        }, "The list is empty!") : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _colDefault.default), {
+        }, "The list is empty!") : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _navigationBar.NavigationBar), {
+            user: user,
+            movies: movies,
+            showSearch: false,
+            onLoggedOut: ()=>{
+                setUser(null);
+                setToken(null);
+                localStorage.clear();
+            },
+            onSearch: (query)=>setFilter(query),
+            __source: {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 127,
+                columnNumber: 39
+            }
+        }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _colDefault.default), {
             md: 8,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 126,
-                columnNumber: 37
+                lineNumber: 137,
+                columnNumber: 82
             }
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _movieView.MovieView), {
             movies: movies,
@@ -24231,13 +24247,13 @@ const MainView = ()=>{
             token: token,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 127,
-                columnNumber: 41
+                lineNumber: 138,
+                columnNumber: 45
             }
-        }))),
+        })))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 117,
+            lineNumber: 118,
             columnNumber: 21
         },
         __self: undefined
@@ -24248,23 +24264,38 @@ const MainView = ()=>{
             replace: true,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 138,
+                lineNumber: 149,
                 columnNumber: 37
             }
         }) : movies.length === 0 ? /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _colDefault.default), {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 140,
+                lineNumber: 151,
                 columnNumber: 37
             }
-        }, "The list is empty!") : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, filteredMovies.map((movie)=>/*#__PURE__*/ (0, _reactDefault.default).createElement((0, _colDefault.default), {
+        }, "The list is empty!") : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _navigationBar.NavigationBar), {
+            user: user,
+            movies: movies,
+            showSearch: true,
+            onLoggedOut: ()=>{
+                setUser(null);
+                setToken(null);
+                localStorage.clear();
+            },
+            onSearch: (query)=>setFilter(query),
+            __source: {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 154,
+                columnNumber: 41
+            }
+        }), filteredMovies.map((movie)=>/*#__PURE__*/ (0, _reactDefault.default).createElement((0, _colDefault.default), {
                 className: "mb-4 px-2",
                 md: 3,
                 sm: 4,
                 key: movie.id,
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 145,
+                    lineNumber: 166,
                     columnNumber: 45
                 }
             }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _movieCard.MovieCard), {
@@ -24274,13 +24305,13 @@ const MainView = ()=>{
                 onUpdateUser: setUser,
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 146,
+                    lineNumber: 167,
                     columnNumber: 49
                 }
             }))))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 133,
+            lineNumber: 144,
             columnNumber: 21
         },
         __self: undefined
@@ -24291,15 +24322,30 @@ const MainView = ()=>{
             replace: true,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 159,
+                lineNumber: 180,
                 columnNumber: 37
             }
-        }) : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _colDefault.default), {
+        }) : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _navigationBar.NavigationBar), {
+            user: user,
+            movies: movies,
+            showSearch: false,
+            onLoggedOut: ()=>{
+                setUser(null);
+                setToken(null);
+                localStorage.clear();
+            },
+            onSearch: (query)=>setFilter(query),
+            __source: {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 182,
+                columnNumber: 39
+            }
+        }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _colDefault.default), {
             md: 5,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 161,
-                columnNumber: 37
+                lineNumber: 192,
+                columnNumber: 82
             }
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _profileView.ProfileView), {
             user: user,
@@ -24308,13 +24354,13 @@ const MainView = ()=>{
             onUpdateUser: setUser,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 162,
-                columnNumber: 41
+                lineNumber: 193,
+                columnNumber: 45
             }
-        }))),
+        })))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 154,
+            lineNumber: 175,
             columnNumber: 21
         },
         __self: undefined
@@ -40290,7 +40336,7 @@ var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
+const NavigationBar = ({ user, showSearch, onSearch, onLoggedOut })=>{
     const handleSearchChange = (e)=>{
         onSearch(e.target.value);
     };
@@ -40300,14 +40346,14 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         className: "",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 12,
+            lineNumber: 13,
             columnNumber: 9
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Container), {
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 13,
+            lineNumber: 14,
             columnNumber: 13
         },
         __self: undefined
@@ -40316,15 +40362,15 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         to: "/",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 14,
+            lineNumber: 15,
             columnNumber: 17
         },
         __self: undefined
-    }, "MyFlix"), user && /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form), {
+    }, "MyFlix"), user && showSearch && /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form), {
         className: "d-none d-lg-flex mx-auto align-items-center",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 20,
+            lineNumber: 21,
             columnNumber: 21
         },
         __self: undefined
@@ -40336,7 +40382,7 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         onChange: handleSearchChange,
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 21,
+            lineNumber: 22,
             columnNumber: 25
         },
         __self: undefined
@@ -40344,15 +40390,15 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         variant: "outline-light",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 28,
+            lineNumber: 29,
             columnNumber: 25
         },
         __self: undefined
-    }, "Search")), user && /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form), {
+    }, "Search1")), user && /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form), {
         className: "d-lg-none d-flex align-items-center ms-auto",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 33,
+            lineNumber: 34,
             columnNumber: 21
         },
         __self: undefined
@@ -40364,7 +40410,7 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         onChange: handleSearchChange,
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 34,
+            lineNumber: 35,
             columnNumber: 25
         },
         __self: undefined
@@ -40372,15 +40418,15 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         variant: "outline-light",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 41,
+            lineNumber: 42,
             columnNumber: 25
         },
         __self: undefined
-    }, "Search")), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Navbar).Toggle, {
+    }, "Search2")), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Navbar).Toggle, {
         "aria-controls": "responsive-navbar-nav",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 44,
+            lineNumber: 45,
             columnNumber: 17
         },
         __self: undefined
@@ -40388,7 +40434,7 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         id: "basic-navbar-nav",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 45,
+            lineNumber: 46,
             columnNumber: 17
         },
         __self: undefined
@@ -40396,7 +40442,7 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         className: "me-auto",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 46,
+            lineNumber: 47,
             columnNumber: 21
         },
         __self: undefined
@@ -40405,7 +40451,7 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         to: "/login",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 49,
+            lineNumber: 50,
             columnNumber: 33
         },
         __self: undefined
@@ -40414,7 +40460,7 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         to: "/signup",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 52,
+            lineNumber: 53,
             columnNumber: 33
         },
         __self: undefined
@@ -40423,7 +40469,7 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         to: "/",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 59,
+            lineNumber: 60,
             columnNumber: 33
         },
         __self: undefined
@@ -40432,7 +40478,7 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         to: "/profile",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 62,
+            lineNumber: 63,
             columnNumber: 33
         },
         __self: undefined
@@ -40440,7 +40486,7 @@ const NavigationBar = ({ user, onSearch, onLoggedOut })=>{
         onClick: onLoggedOut,
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 65,
+            lineNumber: 66,
             columnNumber: 33
         },
         __self: undefined

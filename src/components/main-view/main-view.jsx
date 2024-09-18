@@ -73,9 +73,10 @@ export const MainView = () => {
 
     return (
         <BrowserRouter>
-            <NavigationBar
+            {!user && (<NavigationBar
                 user={user}
                 movies={movies}
+                showSearch={true}
 
                 onLoggedOut={() => {
                     setUser(null);
@@ -83,7 +84,7 @@ export const MainView = () => {
                     localStorage.clear();
                 }}
                 onSearch={(query) => setFilter(query)}
-            />
+            />)}
             <Row className="justify-content-md-center">
                 <Routes>
                     <Route
@@ -123,9 +124,19 @@ export const MainView = () => {
                                 ) : movies.length === 0 ? (
                                     <Col>The list is empty!</Col>
                                 ) : (
-                                    <Col md={8}>
-                                        <MovieView movies={movies} user={user} token={token} />
-                                    </Col>
+                                    <><NavigationBar
+                                        user={user}
+                                        movies={movies}
+                                        showSearch={false}
+
+                                        onLoggedOut={() => {
+                                            setUser(null);
+                                            setToken(null);
+                                            localStorage.clear();
+                                        }}
+                                        onSearch={(query) => setFilter(query)} /><Col md={8}>
+                                            <MovieView movies={movies} user={user} token={token} />
+                                        </Col></>
                                 )}
                             </>
                         }
@@ -140,7 +151,17 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <>
+                                        <NavigationBar
+                                            user={user}
+                                            movies={movies}
+                                            showSearch={true}
 
+                                            onLoggedOut={() => {
+                                                setUser(null);
+                                                setToken(null);
+                                                localStorage.clear();
+                                            }}
+                                            onSearch={(query) => setFilter(query)} />
                                         {filteredMovies.map((movie) => (
                                             <Col className="mb-4 px-2" md={3} sm={4} key={movie.id} >
                                                 <MovieCard movie={movie} user={user.Username} token={token} onUpdateUser={setUser} />
@@ -158,9 +179,19 @@ export const MainView = () => {
                                 {!user ? (
                                     <Navigate to="/login" replace />
                                 ) : (
-                                    < Col md={5}>
-                                        <ProfileView user={user} token={token} movies={movies} onUpdateUser={setUser} />
-                                    </Col>
+                                    <><NavigationBar
+                                        user={user}
+                                        movies={movies}
+                                        showSearch={false}
+
+                                        onLoggedOut={() => {
+                                            setUser(null);
+                                            setToken(null);
+                                            localStorage.clear();
+                                        }}
+                                        onSearch={(query) => setFilter(query)} /><Col md={5}>
+                                            <ProfileView user={user} token={token} movies={movies} onUpdateUser={setUser} />
+                                        </Col></>
                                 )}
                             </>
                         }
