@@ -26,11 +26,11 @@ export const NavigationBar = ({ user, showSearch, onSearch, onLoggedOut }) => {
                             aria-label="Search"
                             onChange={handleSearchChange}
                         />
-                        <Button variant="outline-light">Search1</Button>
+                        <Button variant="outline-light">Search</Button>
                     </Form>
                 )}
                 {/*small screens */}
-                {user && (
+                {user && showSearch && (
                     <Form className="d-lg-none d-flex align-items-center ms-auto">
                         <Form.Control
                             type="search"
@@ -39,7 +39,7 @@ export const NavigationBar = ({ user, showSearch, onSearch, onLoggedOut }) => {
                             aria-label="Search"
                             onChange={handleSearchChange}
                         />
-                        <Button variant="outline-light">Search2</Button>
+                        <Button variant="outline-light">Search</Button>
                     </Form>
                 )}
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

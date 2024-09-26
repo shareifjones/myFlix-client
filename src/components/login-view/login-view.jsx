@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import { Button, Form, Image } from "react-bootstrap";
 
 
-
-export const LoginView = ({ onLoggedIn }) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+export function LoginView({ onLoggedIn }) {
+    // const [username, setUsername] = useState("");
+    // const [password, setPassword] = useState("");
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         const data = {
-            Username: username,
-            Password: password
+            Username: event.currentTarget.username.value,
+            Password: event.currentTarget.password.value
         };
 
         try {
@@ -50,19 +48,21 @@ export const LoginView = ({ onLoggedIn }) => {
                     <Form.Label><b>Username: </b></Form.Label>
                     <Form.Control
                         type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        // value={username}
+                        // onChange={(e) => setUsername(e.target.value)}
                         required
                         minLength="3"
+                        name="username"
                     />
                 </Form.Group>
                 <Form.Group controlId="formPassword">
                     <Form.Label><b>Password: </b></Form.Label>
                     <Form.Control
                         type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        //   value={password}
+                        //  onChange={(e) => setPassword(e.target.value)}
                         required
+                        name="password"
                     />
                 </Form.Group>
                 <Button variant="outline-dark" type="submit">

@@ -15,7 +15,6 @@ export const ProfileView = ({ user, movies, token, onLoggedIn }) => {
     const [birthday, setBirthday] = useState(user.Birthday);
     const [error, setError] = useState("");
 
-
     useEffect(() => {
 
         const fetchUserInfo = async () => {
@@ -64,7 +63,7 @@ export const ProfileView = ({ user, movies, token, onLoggedIn }) => {
             if (!response.ok) throw new Error("Failed to update user info");
             const data = await response.json();
             setUserInfo(data);
-            onLoggedIn(data.username, token);
+            onLoggedIn(data, token);
         } catch (err) {
             setError(err.message);
         }
@@ -84,14 +83,14 @@ export const ProfileView = ({ user, movies, token, onLoggedIn }) => {
         }
     };
 
-    const FavoriteMovies = movies.filter(m => userInfo.FavoriteMovies?.includes(m.id));
+    const FavoriteMovies = movies?.filter(m => userInfo.FavoriteMovies?.includes(m.id));
     console.log("info and movies", userInfo, FavoriteMovies);
 
 
     return (
 
         <div>
-            <div class="movies">
+            <div className="movies">
                 <h2 className="text-center">Favorite Movies</h2>
                 {FavoriteMovies.length === 0 ? (
                     <p>No favorite movies added yet!</p>

@@ -19,6 +19,7 @@ export const MainView = () => {
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [filter, setFilter] = useState('');
     const [movies, setMovies] = useState([]);
+
     const handleLoggedIn = (user, token) => {
         setUser(user);
         setToken(token);
@@ -190,7 +191,7 @@ export const MainView = () => {
                                             localStorage.clear();
                                         }}
                                         onSearch={(query) => setFilter(query)} /><Col md={5}>
-                                            <ProfileView user={user} token={token} movies={movies} onUpdateUser={setUser} />
+                                            <ProfileView user={user} token={token} movies={movies} onUpdateUser={setUser} onLoggedIn={handleLoggedIn} />
                                         </Col></>
                                 )}
                             </>
