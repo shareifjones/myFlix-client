@@ -12,6 +12,7 @@ export function LoginView({ onLoggedIn }) {
             Password: event.currentTarget.password.value
         };
 
+
         try {
             const response = await fetch(`https://shareif-flix-0b8cde79839e.herokuapp.com/login?Username=${data.Username}&Password=${data.Password}`,
 
