@@ -84,7 +84,7 @@ export const ProfileView = ({ user, movies, token, onLoggedIn }) => {
     };
 
     const FavoriteMovies = movies?.filter(m => userInfo.FavoriteMovies?.includes(m.id));
-    console.log("info and movies", userInfo, FavoriteMovies);
+
 
 
     return (
